@@ -1,5 +1,5 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useCookies } from 'react-cookie'
+import { Cookies, useCookies } from 'react-cookie'
 
 const PrivateRouteForAdmin = () => {
   const [cookies, _] = useCookies(["user"]);
@@ -10,8 +10,9 @@ const PrivateRouteForAdmin = () => {
 
 const PrivateRouteForLogin = () => {
   const [cookies, _] = useCookies(["user"]);
+  console.log(Cookies)
   return (
-    cookies.user == undefined ? <Outlet /> : <Navigate to='/admin/details' />
+    cookies.user == 'undefined'  ? <Outlet /> : <Navigate to='/admin/details' />
   )
 }
 
