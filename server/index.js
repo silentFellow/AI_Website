@@ -14,7 +14,6 @@ app.use(cors())
 const PORT = process.env.PORT || 9999
 
 try {
-  console.log(new Date())
   mongoose.connect(process.env.MONGOOSE_URL)
   const db = mongoose.connection
   db.once('open', async () => {

@@ -3,6 +3,16 @@ import eventModel from '../models/eventModel.js'
 
 const router = express.Router()
 
+router.get('/', async (req, res) => {
+  try {
+    const data = await eventModel.find()
+    res.status(200).send(data)
+  }
+  catch(e) {
+    res.status(500).send(e)
+  }
+})
+
 router.get('/add', async (req, res) => {
   const data = req.body
   try {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AdminLogin from './pages/AdminLogin';
 import Home from './pages/Home';
@@ -16,6 +16,7 @@ const App = () => {
         <Route element={<PrivateRouteForLogin />}>
           <Route path='/admin/login' element={<AdminLogin />} />
         </Route>
+        {/* <Route path='/admin/login' element={<AdminLogin />}/> */}
       </Routes>
     </Router>
   );

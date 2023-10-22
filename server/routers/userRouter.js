@@ -3,6 +3,16 @@ import userModel from '../models/userModel.js'
 
 const router = express.Router()
 
+router.get('/', async (req, res) => {
+  try {
+    const data = await userModel.find()
+    res.status(200).send(data)
+  }
+  catch(e) {
+    res.status(500).send(e)
+  }
+})
+
 router.get('/login/:userName', async (req, res) => {
   const userName = req.params.userName
   try {
