@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
   }
 })
 
-router.get('/add', async (req, res) => {
+router.post('/add', async (req, res) => {
   const data = req.body
   try {
     await eventModel.create(data)

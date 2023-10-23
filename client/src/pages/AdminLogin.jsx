@@ -24,6 +24,7 @@ const AdminLogin = () => {
       }
       setMessage('Please wait...')
       const res = await userApi.get(`/users/login/${userName}`)
+      console.log(res)
       if(res.data.password === password) {
         setCookie('user', res.data.userName)
         navigate('/admin/details')
@@ -47,13 +48,13 @@ const AdminLogin = () => {
         <input 
           type="text" 
           placeholder='Enter your emain...'
-          className='bg-secondary placeholder:text-ascent text-primary p-3 px-5 rounded-md my-3 w-[21rem]'
+          className='bg-primary placeholder:text-ascent text-secondary p-3 px-5 rounded-md my-3 w-[21rem] outline-none border-b-4 border-dotted border-ascent'
           ref={emailRef}
         />
         <input 
           type="password" 
           placeholder='Enter password...'
-          className='bg-secondary placeholder:text-ascent text-primary p-3 px-5 rounded-md my-3 w-[21rem]'
+          className='bg-primary placeholder:text-ascent text-secondary p-3 px-5 rounded-md my-3 w-[21rem] outline-none border-b-4 border-dotted border-ascent'
           ref={passRef}
         />
 
