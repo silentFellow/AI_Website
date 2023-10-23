@@ -15,7 +15,7 @@ const Card = ({Name,btn,desc,rules}) => {
             <div className="flex flex-col  items-center  ml-9 w-[500px]">
               <h3 className="text-2xl mt-4">{Name}</h3>
               <p className="mt-[50px] m-8">{desc}</p>
-              <button class="bg-blue-500 text-white rounded-full py-2 px-4">
+              <button className="bg-blue-500 text-white rounded-full py-2 px-4">
                 {btn}
               </button>
             </div>

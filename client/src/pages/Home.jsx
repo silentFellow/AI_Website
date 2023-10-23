@@ -1,7 +1,6 @@
 import React from 'react'
- import Navbar from '../components/navbar'
+import Navbar from '../components/navbar'
 import Card from "../components/Card"
-import { Link } from 'react-router-dom'
 import img from "../assets/ai.png"
 
 const Home = () => {
