@@ -7,6 +7,9 @@ const eventSchema = mongoose.Schema({
   link: {
     type: String
   }, 
+  description: {
+    type: String
+  }, 
   rules: {
     type: String
   }, 
