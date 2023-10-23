@@ -6,14 +6,10 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
-    <div className="flex flex-col max-w-full">
-      <div className="border border-black flex justify-start">
+    <div className="flex flex-col max-w-full bg-home-bg">
+      <div className="border border-black flex justify-end">
         <section className="ellipses bg-blue-400 h-[650px] w-[900px] ">
-          <Link to='/admin/details'
-            className='p-3 text-[1.2rem] bg-ascent rounded-lg text-primary absolute right-[15rem] hover:opacity-75 mt-6'
-          >
-            LOGIN
-          </Link>
+        
           <img src={img} alt="Ai logo" className="w-[700px] mr-[200px] -mt-[80px] bg-transparent" />
         </section>
         
