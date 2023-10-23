@@ -6,7 +6,7 @@ import { CiMenuKebab } from 'react-icons/ci'
 import Usercard from '../components/Usercard'
 import userApi from '../api/app'
 import { AiOutlineClose } from 'react-icons/ai'
-import e from 'cors'
+import EventRegisterForm from '../components/eventRegisterForm'
  
 const Admin = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -21,11 +21,6 @@ const Admin = () => {
   const unameRef = useRef()
   const passRef = useRef()
   const cPassRef = useRef()
-
-  const eventNameRef = useRef()
-  const linkRef = useRef()
-  const rulesRef = useRef()
-  const dtRef = useRef()
 
   const [_, setCookie] = useCookies(['user'])
   const navigate = useNavigate()
@@ -70,39 +65,6 @@ const Admin = () => {
     }
   }
 
-  const eventRegister = async (e) => {
-    e.preventDefault()
-    const rules = rulesRef.current.value
-    const link = linkRef.current.value
-    const name = eventNameRef.current.value
-    const dt = dtRef.current.value
-    if(rules == '' || link == '' || name == '' || dt == 'undefined') {
-      setMessage("Enter valid details...")
-      return
-    }
-    try {
-      setMessage('Please wait...')
-      const res = await userApi.post('/events/add', {
-        name, 
-        link, 
-        rules, 
-        'expireAt': new Date(dt).toISOString()
-      })
-      if(res.status == 200) {
-        setMessage('')
-        setAddEvent(false)
-        rulesRef.current.value = '' 
-        linkRef.current.value = '' 
-        eventNameRef.current.value = '' 
-        dtRef.current.value = '' 
-      }
-      else setMessage('Something went wrong...')
-    }
-    catch(e) {
-      console.log(e)
-    }
-  }
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -121,7 +83,6 @@ const Admin = () => {
   return (
     <div className="min-h-screen min-w-screen bg-primary">
       <section className="min-h-screen max-w-5xl m-auto">
-
         <nav className="w-full text-secondary flex justify-between p-4 px-9">
           <span className="font-bold text-[1.2rem] hidden md:flex">KEC AI ASSOCIATION</span>
           <span className="font-bold text-[1.2rem] md:hidden">KEC</span>
@@ -183,52 +144,10 @@ const Admin = () => {
           </section>
 
           <section className={`${addEvent ? "absolute top-0 left-0 flex justify-center items-center h-screen w-screen z-40" : 'hidden'}`}>
-            <form className="relative h-screen w-full max-w-5xl bg-primary z-30 rounded-lg p-6 flex flex-col justify-center items-center">
-              <AiOutlineClose 
-                className='text-[1.8rem] text-red-950 absolute top-6 md:top-12 right-6 md:right-12 font-extrabold cursor-pointer' 
-                onClick={() => {
-                  setAddEvent(false)
-                  setMessage('')
-                  eventNameRef.current.value = ''
-                  linkRef.current.value = ''
-                  rulesRef.current.value = ''
-                  dtRef.current.value = ''
-                }}
-              />
-              <input 
-                type="text" 
-                placeholder='Enter event name...'
-                className='h-[3.9rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent' 
-                ref={eventNameRef}
-              />
-              <input 
-                type="text" 
-                placeholder='Enter google form link...'
-                className='h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'
-                ref={linkRef}
-              />
-              <textarea
-                placeholder='Enter Rules...' 
-                cols='9'
-                rows='9'
-                className='w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-4 border-dotted border-ascent'
-                ref={rulesRef}
-              />
-              <input 
-                type="datetime-local"  
-                className='h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'
-                ref={dtRef}
-              />
-              <button
-                className='p-3 px-12 bg-ascent rounded-xl hover:opacity-80 m-3' 
-                onClick={eventRegister}
-              >
-                Regiter
-              </button>
-              <div
-                className={`${message != '' ? 'p-3 h-[3.9rem] w-[93%] md:w-[72%] text-primary bg-secondary mt-3 rounded-xl flex justify-center items-center' : 'hidden'}`}
-              >{message}</div>
-            </form>
+            <EventRegisterForm 
+              setAddEvent={setAddEvent} 
+              type={'Register'}
+            />
           </section>
         </nav>
 
@@ -245,7 +164,7 @@ const Admin = () => {
               <span
                 className={`${category === 'users' ? "text-white cursor-pointer opacity-80 p-2 px-4 border-solid" : "cursor-pointer opacity-80 p-2 px-4 border-solid"}`}
                 onClick={() => setCategory('users')}
-              >EVENTS</span>
+              >USERS</span>
             </section>
           </section>
 

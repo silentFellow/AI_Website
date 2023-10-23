@@ -1,21 +1,22 @@
 import React from 'react'
- import Navbar from '../components/Navbar'
+ import Navbar from '../components/navbar'
 import Card from "../components/Card"
-import { Link } from 'react-router-dom'
 import img from "../assets/ai.png"
+import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (
     <div className="flex flex-col max-w-full">
-      <div className="border border-black flex justify-end">
-        <section className=" ellipses bg-blue-400 h-[650px] w-[900px] ">
-          <Navbar />
-          <img
-            src={img}
-            alt=""
-            className=" w-[700px] ml-[200px] -mt-[80px] bg-transparent"
-          />
+      <div className="border border-black flex justify-start">
+        <section className="ellipses bg-blue-400 h-[650px] w-[900px] ">
+          <Link to='/admin/details'
+            className='p-3 text-[1.2rem] bg-ascent rounded-lg text-primary absolute right-[15rem] hover:opacity-75 mt-6'
+          >
+            LOGIN
+          </Link>
+          <img src={img} alt="Ai logo" className="w-[700px] mr-[200px] -mt-[80px] bg-transparent" />
         </section>
+        
       </div>
       <h3 className="flex justify-center mt-9 mb-4 text-5xl">On Going Events</h3>
       <Card
