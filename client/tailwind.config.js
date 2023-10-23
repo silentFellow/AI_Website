@@ -17,20 +17,7 @@ export default {
         'ascent': '#2E7188', 
         'bg': '#F5F5DC'
         */
-      },
-      borderRadius: {
-        'none': '0',
-        'sm': '0.125rem',
-        DEFAULT: '0.25rem',
-        DEFAULT: '4px',
-        'md': '0.375rem',
-        'lg': '0.5rem',
-        'full': '9999px',
-        'large': '12px',
-      },
-       backgroundImage: {
-        'card-bg': "url('./src/assets/cardbanner.jpg')",
-        
+        'card-head':'#137DE0'
       }
     },
   },
