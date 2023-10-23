@@ -10,7 +10,7 @@ const Home = () => {
       <div className="border border-black flex justify-end">
         <section className=" ellipses bg-blue-400 h-[650px] w-[900px] ">
           <Navbar />
-          <img src={img} alt="" className=" w-[700px] ml-[200px] -mt-[80px] " />
+          <img src={img} alt="" className=" w-[700px] ml-[200px] -mt-[80px] bg-transparent" />
         </section>
       </div>
       <Card
@@ -20,6 +20,7 @@ const Home = () => {
         }
         btn={'Register Now'}
       />
+
     </div>
   );
 }

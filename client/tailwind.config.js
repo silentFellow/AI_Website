@@ -4,6 +4,8 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+
+
   theme: {
     extend: {
       colors: {
@@ -26,6 +28,10 @@ export default {
         'lg': '0.5rem',
         'full': '9999px',
         'large': '12px',
+      },
+       backgroundImage: {
+        'card-bg': "url('./src/assets/cardbanner.jpg')",
+        
       }
     },
   },
