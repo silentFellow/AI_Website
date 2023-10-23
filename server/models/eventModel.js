@@ -13,6 +13,9 @@ const eventSchema = mongoose.Schema({
   rules: {
     type: String
   }, 
+  image: {
+    type: String 
+  }, 
   postedAt: {
     type: Date, 
     default: Date.now
