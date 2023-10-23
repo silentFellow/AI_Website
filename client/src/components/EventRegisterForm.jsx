@@ -2,15 +2,31 @@ import React from 'react'
 import { useRef, useState } from 'react'
 import { AiOutlineClose } from 'react-icons/ai' 
 import userApi from '../api/app'
+import { BiImageAdd } from 'react-icons/bi'
 
 const EventRegisterForm = ({ setAddEvent, type }) => {
 
   const [message, setMessage] = useState('')
+  const [poster, setPoster] = useState('')
+  const [posterPreview, setPosterPreview] = useState('')
   const eventNameRef = useRef()
   const linkRef = useRef()
   const rulesRef = useRef()
   const dtRef = useRef()
   const descRef = useRef()
+
+  const imageConvert = async (file) => {
+    return new Promise((resolve, reject) => {
+      let reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = () => {
+        resolve(reader.result)
+      }
+      reader.onerror = (error) => {
+        reject(error)
+      }
+    })
+  }
 
   const eventRegister = async (e) => {
     e.preventDefault()
@@ -19,17 +35,21 @@ const EventRegisterForm = ({ setAddEvent, type }) => {
     const name = eventNameRef.current.value
     const dt = dtRef.current.value
     const description = descRef.current.value
-    if(rules == '' || link == '' || name == '' || dt == 'undefined') {
+    if(rules == '' || link == '' || name == '' || dt == 'undefined' || description == '' || poster == '') {
       setMessage("Enter valid details...")
       return
     }
     try {
       setMessage('Please wait...')
+
+      const image = await imageConvert(poster)
+
       const res = await userApi.post('/events/add', {
         name, 
         link, 
         description, 
         rules, 
+        image, 
         'expireAt': new Date(dt).toISOString()
       })
       if(res.status == 200) {
@@ -39,6 +59,9 @@ const EventRegisterForm = ({ setAddEvent, type }) => {
         linkRef.current.value = '' 
         eventNameRef.current.value = '' 
         dtRef.current.value = '' 
+        descRef.current.value = ''
+        setPoster('') 
+        setPosterPreview('')
       }
       else setMessage('Something went wrong...')
     }
@@ -48,7 +71,7 @@ const EventRegisterForm = ({ setAddEvent, type }) => {
   }
 
   return (
-    <form className="relative h-screen w-full max-w-5xl bg-primary z-30 rounded-lg p-6 flex flex-col justify-center items-center">
+    <form className="relative min-h-screen w-full max-w-5xl bg-primary z-30 rounded-lg p-6 flex flex-col justify-center items-center">
       <AiOutlineClose 
         className='text-[1.8rem] text-red-950 absolute top-6 md:top-12 right-6 md:right-12 font-extrabold cursor-pointer' 
         onClick={() => {
@@ -86,6 +109,35 @@ const EventRegisterForm = ({ setAddEvent, type }) => {
         className='w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-4 border-dotted border-ascent'
         ref={rulesRef}
       />
+      <input type="file" 
+        accept='image/*' 
+        id='poster' 
+        className='hidden' 
+        onChange={(e) => {
+          let reader = new FileReader()
+          reader.readAsDataURL(e.target.files[0])
+          reader.onload = () => {
+            setPosterPreview(reader.result)
+          }
+          setPoster(e.target.files[0])
+        }}
+      />
+
+      <div className="h-[18rem] w-[18rem] rounded-xl m-3 flex justify-center items-center border-2 border-dashed border-ascent">
+        <label htmlFor="poster">
+          {posterPreview == '' ? 
+          <BiImageAdd
+            className='text-[12rem] cursor-pointer' 
+          />  :
+          <img 
+            src={posterPreview} 
+            alt="Missing" 
+            className='h-[18rem] w-[18rem]'
+          />
+          }
+        </label>
+      </div>
+        
       <input 
         type="datetime-local"  
         className='h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'

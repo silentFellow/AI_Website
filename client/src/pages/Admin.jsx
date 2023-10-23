@@ -96,7 +96,7 @@ const Admin = () => {
             <CiMenuKebab className='text-[1.2rem] text-ascent cursor-pointer' onClick={() => setShowMenu(!showMenu)}/>
             <section className={`${showMenu ? "w-[9rem] bg-ascent rounded-lg p-2 absolute right-2 top-7 z-30 fkex flex-row justify-between" : 'hidden'}`}>
               <div className="text-primary text-[1.1rem] cursor-pointer p-3" onClick={() => setAddUser(!addUser)}>Add User</div>
-              <div className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2" onClick={() => addEvent(!addEvent)}>Add Event</div>
+              <div className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2" onClick={() => setAddEvent(!addEvent)}>Add Event</div>
               <div className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2" onClick={signout}>Sign Out</div>
             </section>
           </section>
@@ -143,7 +143,7 @@ const Admin = () => {
             </form>
           </section>
 
-          <section className={`${addEvent ? "absolute top-0 left-0 flex justify-center items-center h-screen w-screen z-40" : 'hidden'}`}>
+          <section className={`${addEvent ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary" : 'hidden'}`}>
             <EventRegisterForm 
               setAddEvent={setAddEvent} 
               type={'Register'}
