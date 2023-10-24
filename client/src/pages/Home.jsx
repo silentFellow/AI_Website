@@ -13,32 +13,33 @@ const Home = () => {
   useEffect (() => {
     const getEvents = async() => {
 
-      try{
+      try {
         const Events = await userApi.get('/events')
         setEvents(Events.data)
-
-      } catch(e){
+      } catch(e) {
         console.log(e)
       }
-      }
-      getEvents()
+
+    }
+    getEvents()
   },[])
+  
   return (
     <div className="flex flex-col max-w-full bg-home-bg">
-      <div class="flex flex-col sm:flex-row justify-center sm:justify-end">
-        <section class="ellipses bg-blue-100 sm:h-[650px] w-[90%] sm:w-[900px]">
-          <button className="float-right text-blue-800 text-[20px] mr-[30px]">
-            <Link to={"admin/login"}>Login</Link>
-          </button>
+      <div className="flex flex-col sm:flex-row justify-center sm:justify-end">
+        <section className="ellipses bg-blue-100 sm:h-[650px] w-[90%] sm:w-[900px]">
+        <Link to={"admin/login"}><button className="float-left bg-ascent text-primary p-2 px-6 rounded-xl text-[20px] ml-[15rem] lg:ml-0 mt-[3rem] cursor-pointer hover:opacity-70">
+          Login
+        </button></Link>
           <img
             src={img}
             alt="AI logo"
-            class="w-full ml-[1.5rem] sm:w-[700px] lg:w-[700px] -mt-20 bg-transparent"
+            class="w-full mr-[120rem] sm:w-[700px] lg:w-[700px] -mt-20 bg-transparent"
           />
         </section>
       </div>
 
-      <h3 className="flex justify-center mt-9 mb-4 text-5xl">
+      <h3 className="flex justify-center mt-9 mb-4 text-3xl m-3">
         On Going Events
       </h3>
 
@@ -77,19 +78,21 @@ const Home = () => {
           link={"https://youtube.com"}
           img={img1}
         />
-      </div>
-      {events.map((event) => (
+        {events.map((event) => (
         <Card
           Name={event.name}
-          rules={event.rules}
-          img={event.image}
-          desc={event.description}
-          link={event.link}
-          startDate={event.postedAt}
+          desc={event.description} 
+          btn={'Register Now'}
           endDate={event.expireAt}
+          startDate={event.postedAt}
+          link={event.link}
+          img={event.image}
+          rules={event.rules} 
+          key={event._id} 
+          id={event._id}
         />
       ))}
-
+      </div>
       <Footer />
     </div>
   );

@@ -170,11 +170,11 @@ const Admin = () => {
             </section>
           </section>
 
-          <section className="w-full flex flex-col items-center">
+          <section className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {
               category == 'users' ? (
                 users.length == 0 ? (
-                  <div className="h-[21rem] w-full flex justify-center items-center">
+                  <div className="h-[21rem] w-[200%] flex justify-center items-center">
                     <h1 className='font-extrabold text-[1.8rem] md:text-[2.7rem]'>No users Found...</h1>
                   </div>
                 ) : (
@@ -191,7 +191,7 @@ const Admin = () => {
               )
               :
               events.length == 0 ? (
-                <div className="h-[21rem] w-full flex justify-center items-center">
+                <div className="h-[21rem] w-[200%] flex justify-center items-center">
                   <h1 className='font-extrabold text-[1.8rem] md:text-[2.7rem]'>No events Found...</h1>
                 </div>
               ) : (
@@ -199,17 +199,16 @@ const Admin = () => {
                   <Card 
                     key={event._id} 
                     id={event._id} 
-                    name={event.name} 
-                    buttonType={'Update Now'} 
-                    image={event.image} 
+                    Name={event.name} 
+                    btn={'Update Now'} 
+                    img={event.image} 
                     rules={event.rules} 
-                    description={event.description} 
+                    desc={event.description} 
                     link={event.link} 
+                    startDate={event.postedAt} 
                     endDate={event.expireAt} 
                     setChanged={setChanged} 
                     changed={changed} 
-                    setAddEvent={setAddEvent} 
-                    addEvent={addEvent}
                   />
                 ))
               )
