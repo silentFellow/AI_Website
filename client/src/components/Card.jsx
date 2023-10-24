@@ -14,8 +14,8 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate, changed, 
   return (
     <div>
       {popup && (
-        <div className="top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded shadow-lg">
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50">
+          <div className="bg-white p-4 rounded-md shadow-md shadow-black border-[1px] border-solid border-ascent">
             <PopupCard
               close={onClose}
               startDate={startDate}
