@@ -28,7 +28,7 @@ const Home = () => {
     <div className="flex flex-col max-w-full bg-home-bg">
       <div className="flex flex-col sm:flex-row justify-center sm:justify-end">
         <section className="ellipses bg-blue-100 sm:h-[650px] w-[90%] sm:w-[900px]">
-        <Link to={"admin/login"}><button className="float-left bg-ascent text-primary p-2 px-6 rounded-xl text-[20px] ml-[15rem] lg:ml-0 mt-[3rem] cursor-pointer hover:opacity-70">
+        <Link to={"admin/login"}><button className="float-left  text-blue-800 p-2 px-6 rounded-xl text-[20px] ml-[15rem] lg:ml-0 mt-[3rem] cursor-pointer hover:opacity-70">
           Login
         </button></Link>
           <img
