@@ -19,7 +19,7 @@ const PopupCard = ({ close, startDate, rules, link, endDate, btn, changed, setCh
         <div className="h-screen w-screen md:h-[36rem] md:w-[54rem]">
           <div className="mt-[30px]">
             <button
-              className="float-right flex  justify-center transition duration-300 ease-in-out hover:border border-blue-500 items-center rounded-[5px] bg-blue-100 w-[30px] sm:mr-5 h-[30px] mt-5 sm:mt-0"
+              className="float-right flex  justify-center  transition duration-300 ease-in-out hover:border border-blue-500 items-center rounded-[5px] bg-blue-100 w-[30px] sm:mr-5 h-[30px] mt-5 sm:mt-0"
               onClick={close}
             >
               <span className="mt-[-1.5rem] mr-[3rem] md:m-3 mb-2 flex justify-center items-center">
@@ -30,7 +30,7 @@ const PopupCard = ({ close, startDate, rules, link, endDate, btn, changed, setCh
           <br className="md:hidden"/>
           <h3 className="text-center mt-5 text-[1.5rem] md:text-3xl">{Name}</h3>
           <div className="border-3 border-black"></div>
-          <div className="flex flex-col justify-start ml-5 sm:ml-[100px] mr-5 sm:mr-[100px] h-[400px] mt-5 sm:mt-[30px]">
+          <div className="flex flex-col  justify-start ml-5 sm:ml-[100px] mr-5 sm:mr-[100px] h-[400px] mt-5 sm:mt-[30px]">
             <div className="flex justify-center space-x-4 sm:space-x-20 mt-5">
               <p className="hidden md:block">Start Date: {startDt}</p>
               <p className="text-[1.2rem]">End Date: {endDt}</p>
@@ -54,19 +54,25 @@ const PopupCard = ({ close, startDate, rules, link, endDate, btn, changed, setCh
             </button>
           </div>
       </div>
-      <section className={`${editEvent ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary" : 'hidden'}`}>
-        <EventUpdateForm 
-          editEvent={editEvent} 
-          setEditEvent={setEditEvent} 
-          changed={changed} 
-          setChanged={setChanged} 
-          name={Name} 
-          rules={rules} 
-          link={link} 
-          date={endDate} 
-          description={desc} 
-          image={img} 
-          id={id} 
+      <section
+        className={`${
+          editEvent
+            ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary"
+            : "hidden"
+        }`}
+      >
+        <EventUpdateForm
+          editEvent={editEvent}
+          setEditEvent={setEditEvent}
+          changed={changed}
+          setChanged={setChanged}
+          name={Name}
+          rules={rules}
+          link={link}
+          date={endDate}
+          description={desc}
+          image={img}
+          id={id}
         />
       </section>
     </div>

@@ -22,12 +22,12 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate, changed, 
               endDate={endDate}
               rules={rules}
               btn={btn}
-              link={link} 
-              changed={changed} 
-              setChanged={setChanged} 
-              Name={Name} 
-              desc={desc} 
-              img={img} 
+              link={link}
+              changed={changed}
+              setChanged={setChanged}
+              Name={Name}
+              desc={desc}
+              img={img}
               id={id}
             />
           </div>
@@ -53,7 +53,8 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate, changed, 
           </div>
           <button
             onClick={() => setPopup(true)}
-            className="bg-blue-500 mt-3 py-[8px] px-[30px] rounded-full text-white"
+            className="bg-blue-500 mt-3 py-[8px] px-[30px] rounded-full text-white
+            hover:bg-blue-600"
           >
             Know More
           </button>
