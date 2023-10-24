@@ -25,10 +25,16 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate }) => {
         </div>
       )}
       <section>
-        <div className="flex flex-col items-center bg-white shadow-lg h-[720px] w-[350px] mx-auto mb-5 rounded-[15px]
-              sm:flex flex-row w-screen ">
+        <div
+          className="flex flex-col items-center bg-white shadow-lg h-[720px] w-[350px] mx-auto mb-5 rounded-[15px]
+               sm:flex flex-row w-screen md:w-[600px] lg: h-[500px] w-[800px]"
+        >
           <div className="border  h-[300px]  rounded-[15px]">
-            <img className="h-[300px] width-[300px] rounded-[15px] mt-[20px]" src={img} alt="" />
+            <img
+              className="h-[300px] width-[300px] rounded-[15px] mt-[20px]"
+              src={img}
+              alt=""
+            />
           </div>
           <div className="flex flex-col py-[10px] mt-[25px] items-center w-[340px] h-[330px]  ">
             <h3 className="text-2xl">{Name}</h3>
@@ -36,7 +42,12 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate }) => {
             <p className="mt-[18px] text-center">{desc}</p>
             <p className="mt-[20px]">End Date: {endDate}</p>
           </div>
-          <button onClick={() => setPopup(true)} className="bg-blue-500 mt-3 py-[8px] px-[30px] rounded-full text-white">Know More</button>
+          <button
+            onClick={() => setPopup(true)}
+            className="bg-blue-500 mt-3 py-[8px] px-[30px] rounded-full text-white"
+          >
+            Know More
+          </button>
         </div>
       </section>
     </div>
