@@ -19,11 +19,11 @@ const Home = () => {
       } catch(e) {
         console.log(e)
       }
+
     }
     getEvents()
-    console.log(events)
   },[])
-
+  
   return (
     <div className="flex flex-col max-w-full bg-home-bg">
       <div className="flex flex-col sm:flex-row justify-center sm:justify-end">

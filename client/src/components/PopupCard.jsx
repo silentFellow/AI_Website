@@ -50,7 +50,7 @@ const PopupCard = ({ close, startDate, rules, link, endDate, btn, changed, setCh
               }
             }}
           >
-            {btn}
+            Register Now
           </button>
         </div>
       </div>
