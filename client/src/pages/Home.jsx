@@ -26,12 +26,15 @@ const Home = () => {
 
   return (
     <div className="flex flex-col max-w-full bg-home-bg">
-      <div className="flex justify-center sm:justify-end">
-        <section className="ellipses bg-blue-400 sm:h-[650px] w-[90%] sm:w-[900px]">
+      <div class="flex flex-col sm:flex-row justify-center sm:justify-end">
+        <section class="ellipses bg-blue-100 sm:h-[650px] w-[90%] sm:w-[900px]">
+          <button className="float-right text-blue-800 text-[20px] mr-[30px]">
+            <Link to={"admin/login"}>Login</Link>
+          </button>
           <img
             src={img}
             alt="AI logo"
-            className="w-full sm:w-[700px] lg:w-[700px] -mt-20 bg-transparent"
+            class="w-full ml-[1.5rem] sm:w-[700px] lg:w-[700px] -mt-20 bg-transparent"
           />
         </section>
       </div>
