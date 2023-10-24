@@ -8,6 +8,25 @@
   margin-top: 0px;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+scrollbar-width: none;
+
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+
 .ellipses{
   border-radius:0% 100% 100% 0% / 100% 0% 100% 0%  ;
 }

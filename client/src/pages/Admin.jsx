@@ -6,7 +6,8 @@ import { CiMenuKebab } from 'react-icons/ci'
 import Usercard from '../components/Usercard'
 import userApi from '../api/app'
 import { AiOutlineClose } from 'react-icons/ai'
-import EventRegisterForm from '../components/eventRegisterForm'
+import EventRegisterForm from '../components/eventRegisterForm' 
+import Card from '../components/Card'
  
 const Admin = () => {
   const [showMenu, setShowMenu] = useState(false)
@@ -82,7 +83,7 @@ const Admin = () => {
 
   return (
     <div className="min-h-screen min-w-screen bg-primary">
-      <section className="min-h-screen max-w-5xl m-auto">
+      <section className="h-screen overflow-auto max-w-5xl m-auto">
         <nav className="w-full text-secondary flex justify-between p-4 px-9">
           <span className="font-bold text-[1.2rem] hidden md:flex">KEC AI ASSOCIATION</span>
           <span className="font-bold text-[1.2rem] md:hidden">KEC</span>
@@ -146,7 +147,8 @@ const Admin = () => {
           <section className={`${addEvent ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary" : 'hidden'}`}>
             <EventRegisterForm 
               setAddEvent={setAddEvent} 
-              type={'Register'}
+              changed={changed} 
+              setChanged={setChanged}
             />
           </section>
         </nav>
@@ -194,12 +196,20 @@ const Admin = () => {
                 </div>
               ) : (
                 events.map((event) => (
-                  <Usercard 
-                    userName={event.userName}
-                    role={event.role} 
-                    changed={changed}
-                    setChanged={setChanged}
-                    key={event._id}
+                  <Card 
+                    key={event._id} 
+                    id={event._id} 
+                    name={event.name} 
+                    buttonType={'Update Now'} 
+                    image={event.image} 
+                    rules={event.rules} 
+                    description={event.description} 
+                    link={event.link} 
+                    endDate={event.expireAt} 
+                    setChanged={setChanged} 
+                    changed={changed} 
+                    setAddEvent={setAddEvent} 
+                    addEvent={addEvent}
                   />
                 ))
               )
