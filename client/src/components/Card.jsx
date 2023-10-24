@@ -15,7 +15,7 @@ const Card = ({Name,btn,desc,rules,img,link,startDate,endDate}) => {
               link={link}/>
           </div>
         </div>}
-        <section className="flex flex-col mb-9 ">
+        <section className="flex flex-col mb-[100px] ">
           <div className="flex rounded-[15px]  mt-[50px] ml-[300px] bg-white w-[1000px] h-[400px] transition duration-300 ease-in-out border border-bg-home hover:border-blue-500">
             
             <div className="flex ml-[20px] bg-transparent mt-[20px] ">

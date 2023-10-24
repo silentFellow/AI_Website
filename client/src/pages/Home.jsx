@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from "../components/Card"
 import userApi from '../api/app.jsx'
+import Footer from "../components/Footer"
 import img from "../assets/ai.png"
 import img1 from "../assets/peakpx.jpg"
 import { Link } from 'react-router-dom'
@@ -48,6 +49,8 @@ const Home = () => {
         link={event.link} startDate={event.postedAt} endDate={event.expireAt}/>
       ))}
 
+
+        <Footer/>
     </div>
   );
 }

@@ -13,6 +13,7 @@ export default {
         'ascent': '#2E7188', 
         'bg': '#F5F5DC',
         'home-bg':'#ebedf3',  
+        'footer':'#2B63D9',
         /* 'primary': '#000', 
         'secondary': '#15e9c9', 
         'ascent': '#2E7188', 
