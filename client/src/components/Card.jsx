@@ -1,9 +1,11 @@
+import EventUpdateForm from "./EventUpdateForm"; 
 import React, { useState } from "react";
 import PopupCard from "./PopupCard";
 import { Link } from "react-router-dom";
 
-const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate }) => {
+const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate, id, changed, setChanged}) => {
   const [popup, setPopup] = useState(false);
+  const [editEvent, setEditEvent] = useState(false)
 
   const onClose = () => {
     setPopup(!popup);
@@ -50,6 +52,22 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate }) => {
           </button>
         </div>
       </section>
+
+      <section className={`${editEvent ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary" : 'hidden'}`}>
+          <EventUpdateForm 
+            editEvent={editEvent} 
+            setEditEvent={setEditEvent} 
+            changed={changed} 
+            setChanged={setChanged} 
+            name={Name} 
+            link={link} 
+            rules={rules} 
+            date={endDate} 
+            description={desc} 
+            image={img} 
+            id={id} 
+          />
+        </section>
     </div>
   );
 };

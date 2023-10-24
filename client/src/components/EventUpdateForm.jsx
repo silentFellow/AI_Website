@@ -1,10 +1,34 @@
 import React from 'react'
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { AiOutlineClose } from 'react-icons/ai' 
 import userApi from '../api/app'
 import { BiImageAdd } from 'react-icons/bi'
 
-const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
+const EventUpdateForm = ({ editEvent, setEditEvent, changed, setChanged, name, link, rules, date, description, image, id }) => {
+
+  const dateConvert = (dateISO) => {
+    const date = new Date(dateISO)
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}`;
+
+    return formattedDate
+
+  }
+
+  useEffect(() => {
+    eventNameRef.current.value = name 
+    linkRef.current.value = link 
+    rulesRef.current.value = rules 
+    descRef.current.value = description 
+    dtRef.current.value = dateConvert(date) 
+    setPoster(image)
+    setPosterPreview(image)
+  }, [editEvent]) 
 
   const [message, setMessage] = useState('')
   const [poster, setPoster] = useState('')
@@ -28,7 +52,7 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
     })
   }
 
-  const eventRegister = async (e) => {
+  const eventUpdate = async (e) => {
     e.preventDefault()
     const rules = rulesRef.current.value
     const link = linkRef.current.value
@@ -42,19 +66,20 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
     try {
       setMessage('Please wait...')
 
-      const image = await imageConvert(poster)
+      let images
+      poster == posterPreview ? images = poster : await imageConvert(poster)
 
-      const res = await userApi.post('/events/add', {
+      const res = await userApi.put(`/events/update/${id}`, {
         name, 
         link, 
         description, 
         rules, 
-        image, 
+        images, 
         'expireAt': new Date(dt).toISOString()
       })
       if(res.status == 200) {
         setMessage('')
-        setAddEvent(false)
+        setEditEvent(false)
         rulesRef.current.value = '' 
         linkRef.current.value = '' 
         eventNameRef.current.value = '' 
@@ -77,11 +102,12 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
       <AiOutlineClose 
         className='text-[1.8rem] text-red-950 absolute top-6 md:top-12 right-6 md:right-12 font-extrabold cursor-pointer' 
         onClick={() => {
-        setAddEvent(false)
+        setEditEvent(false)
         setMessage('')
         eventNameRef.current.value = ''
         linkRef.current.value = ''
-        rulesRef.current.value = ''
+        rulesRef.current.value = '' 
+        descRef.current.value = '' 
         dtRef.current.value = ''
         }}
       />
@@ -95,7 +121,7 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
         type="text" 
         placeholder='Enter google form link...'
         className='h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'
-        ref={linkRef}
+        ref={linkRef} 
       />
       <textarea
         placeholder='Enter Description...' 
@@ -111,7 +137,7 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
         className='w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-4 border-dotted border-ascent'
         ref={rulesRef}
       />
-      <input type="file" 
+      {/* <input type="file" 
         accept='image/*' 
         id='poster' 
         className='hidden' 
@@ -120,6 +146,9 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
           reader.readAsDataURL(e.target.files[0])
           reader.onload = () => {
             setPosterPreview(reader.result)
+          }
+          reader.onerror = (error) => {
+            console.log(error)
           }
           setPoster(e.target.files[0])
         }}
@@ -138,16 +167,17 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
           />
           }
         </label>
-      </div>
+      </div> */}
         
       <input 
         type="datetime-local"  
         className='h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'
         ref={dtRef} 
+        defaultValue={dateConvert(date)} 
       />
       <button
         className='p-3 px-12 bg-ascent rounded-xl hover:opacity-80 m-3' 
-        onClick={eventRegister}
+        onClick={eventUpdate}
       >
         Add Event
       </button>
@@ -158,4 +188,4 @@ const EventRegisterForm = ({ setAddEvent, changed, setChanged }) => {
   )
 }
 
-export default EventRegisterForm
+export default EventUpdateForm
