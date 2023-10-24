@@ -39,7 +39,7 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate }) => {
           <div className="flex flex-col py-[10px] mt-[25px] items-center w-[340px] h-[330px]  ">
             <h3 className="text-2xl">{Name}</h3>
             <span className="border-2 w-[200px] border-blue-900"></span>
-            <p className="mt-[18px] text-center">{desc}</p>
+            <p className="mt-[18px] text-center overflow-hidden">{desc}</p>
             <p className="mt-[20px]">End Date: {endDate}</p>
           </div>
           <button

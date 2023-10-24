@@ -30,7 +30,7 @@ const PopupCard = ({ close, startDate, rules, link, endDate, btn }) => {
             className="float-right mt-5 sm:mr-10 bg-blue-500 text-white rounded-full py-2 px-4"
             onClick={() => window.open(link, "_blank")}
           >
-            {btn}
+            Register Now
           </button>
         </div>
       </div>

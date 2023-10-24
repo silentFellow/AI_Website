@@ -21,9 +21,8 @@ const Home = () => {
         console.log(e)
       }
       }
-
+      getEvents()
   },[])
-
   return (
     <div className="flex flex-col max-w-full bg-home-bg">
       <div class="flex flex-col sm:flex-row justify-center sm:justify-end">
