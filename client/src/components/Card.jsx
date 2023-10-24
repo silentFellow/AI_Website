@@ -1,9 +1,8 @@
-import img from "../assets/peakpx.jpg"
 import React, { useState } from "react";
 import PopupCard from "./PopupCard";
 import { Link } from "react-router-dom";
 
-const Card = ({Name,btn,desc,rules,endDate}) => {
+const Card = ({Name,btn,desc,rules,img,link,startDate,endDate}) => {
 
     const[popup,setPopup] = useState(false)
 
@@ -12,7 +11,8 @@ const Card = ({Name,btn,desc,rules,endDate}) => {
       <div>
         {popup && <div className="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50">
           <div className="bg-white p-4 rounded shadow-lg">
-            <PopupCard close={onClose} startDate={'12/12/12'} endDate={'13/12/23'}/>
+            <PopupCard close={onClose} startDate={startDate} endDate={endDate} rules={rules} btn={btn}
+              link={link}/>
           </div>
         </div>}
         <section className="flex flex-col mb-9 ">
