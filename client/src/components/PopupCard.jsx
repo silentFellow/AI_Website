@@ -4,7 +4,7 @@ const PopupCard = ({ close, startDate, rules, link, endDate, btn }) => {
   return (
     <div>
       <div className="bg-[rgba(0,0,0,.7)]">
-        <div className="fixed right-0 top-0 bottom-0 left-0 z-1000 rounded-[15px] w-full sm:w-[900px] h-[600px] bg-white mt-5 ml-5 sm:ml-[300px] border border-blue-600">
+        <div className="fixed right-0 top-0 bottom-0 left-0 z-1000 rounded-[15px] w-screen sm:w-[900px] h-[600px] bg-white mt-5 ml-5 sm:ml-[300px] border border-blue-600">
           <div className="mt-[30px]">
             <button
               className="float-right flex  justify-center transition duration-300 ease-in-out hover:border border-blue-500 items-center rounded-[5px] bg-blue-100 w-[30px] sm:mr-5 h-[30px] mt-5 sm:mt-0"
