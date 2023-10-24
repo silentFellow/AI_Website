@@ -15,19 +15,19 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate, changed, 
     <div>
       {popup && (
         <div className="top-0 left-0 right-0 bottom-0 flex items-center justify-center z-50">
-          <div className="bg-white p-4 rounded shadow-lg">
+          <div className="min-h-screen flex items-center justify-center">
             <PopupCard
               close={onClose}
               startDate={startDate}
               endDate={endDate}
               rules={rules}
               btn={btn}
-              link={link} 
-              changed={changed} 
-              setChanged={setChanged} 
-              Name={Name} 
-              desc={desc} 
-              img={img} 
+              link={link}
+              changed={changed}
+              setChanged={setChanged}
+              Name={Name}
+              desc={desc}
+              img={img}
               id={id}
             />
           </div>
@@ -53,7 +53,8 @@ const Card = ({ Name, btn, desc, rules, img, link, startDate, endDate, changed, 
           </div>
           <button
             onClick={() => setPopup(true)}
-            className="bg-blue-500 mt-3 py-[8px] px-[30px] rounded-full text-white"
+            className="bg-blue-500 mt-3 py-[8px] px-[30px] rounded-full text-white
+            hover:bg-blue-600"
           >
             Know More
           </button>
