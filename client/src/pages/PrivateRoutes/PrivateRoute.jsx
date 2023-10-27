@@ -2,16 +2,16 @@ import { Outlet, Navigate } from "react-router-dom";
 import { useCookies } from 'react-cookie'
 
 const PrivateRouteForAdmin = () => {
-  const [cookies, _] = useCookies(["user"]);
+  const [cookies, _] = useCookies(["AdminForAIWebsiteKEC"]);
   return (
-    cookies.user != 'undefined' ? <Outlet /> : <Navigate to='/admin/login' />
+    cookies.AdminForAIWebsiteKEC !== "undefined" ? <Outlet /> : <Navigate to='/admin/login' />
   )
 }
 
 const PrivateRouteForLogin = () => {
-  const [cookies, _] = useCookies(["user"]);
+  const [cookies, _] = useCookies(["AdminForAIWebsiteKEC"]);
   return (
-    cookies.user == 'undefined'  ? <Outlet /> : <Navigate to='/admin/details' />
+    cookies.AdminForAIWebsiteKEC === "undefined"  ? <Outlet /> : <Navigate to='/admin/details' />
   )
 }
 

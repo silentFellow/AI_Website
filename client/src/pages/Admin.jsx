@@ -24,11 +24,11 @@ const Admin = () => {
   const passRef = useRef()
   const cPassRef = useRef()
 
-  const [_, setCookie] = useCookies(['user'])
+  const [_, setCookie] = useCookies(['AdminForAIWebsiteKEC'])
   const navigate = useNavigate()
 
   const signout = () => {
-    setCookie('user', undefined)
+    setCookie('AdminForAIWebsiteKEC', "undefined")
     navigate('/')
   }
 
@@ -258,7 +258,7 @@ const Admin = () => {
           <section className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
             {category == "users" ? (
               users.length == 0 ? (
-                <div className="h-[21rem] w-[200%] flex justify-center items-center">
+                <div className="h-[21rem] w-[100%] lg:w-[200%] flex justify-center items-center">
                   <h1 className="font-extrabold text-[1.8rem] md:text-[2.7rem]">
                     No users Found...
                   </h1>
@@ -275,7 +275,7 @@ const Admin = () => {
                 ))
               )
             ) : events.length == 0 ? (
-              <div className="h-[21rem] w-[200%] flex justify-center items-center">
+              <div className="h-[21rem] w-[100%] lg:w-[200%] flex justify-center items-center">
                 <h1 className="font-extrabold text-[1.8rem] md:text-[2.7rem]">
                   No events Found...
                 </h1>

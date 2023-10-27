@@ -9,7 +9,7 @@ import userApi from '../api/app'
 const AdminLogin = () => {
 
   const navigate = useNavigate()
-  const [_, setCookie] = useCookies(["user"])
+  const [_, setCookie] = useCookies(["AdminForAIWebsiteKEC"])
 
   const emailRef = useRef()
   const passRef = useRef()
@@ -28,7 +28,7 @@ const AdminLogin = () => {
       const res = await userApi.get(`/users/login/${userName}`)
       console.log(res)
       if(res.data.password === password) {
-        setCookie('user', res.data.userName)
+        setCookie('AdminForAIWebsiteKEC', res.data.userName)
         navigate('/admin/details')
       }
       else {
