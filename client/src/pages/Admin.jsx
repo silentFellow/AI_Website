@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import { useCookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
@@ -85,139 +86,223 @@ const Admin = () => {
     <div className="min-h-screen min-w-screen bg-primary">
       <section className="h-screen overflow-auto max-w-5xl m-auto">
         <nav className="w-full text-secondary flex justify-between p-4 px-9">
-          <span className="font-bold text-[1.2rem] hidden md:flex">KEC AI ASSOCIATION</span>
+          <span className="font-bold text-[1.2rem] hidden md:flex">
+            KEC AI ASSOCIATION
+          </span>
           <span className="font-bold text-[1.2rem] md:hidden">KEC</span>
 
-          <section className='hidden md:flex'>
-            <span className="font-bold text-[1.1rem] cursor-pointer hover:opacity-80" onClick={() => setAddUser(!addUser)}>Add User</span>
-            <span className="font-bold text-[1.1rem] ml-6 cursor-pointer hover:opacity-80" onClick={() => setAddEvent(!addEvent)}>Add Event</span>
-            <span className="font-bold text-[1.1rem] ml-6 cursor-pointer hover:opacity-80" onClick={signout}>Sign Out</span>
+          <section className="hidden md:flex">
+            <Link to={"/"}>
+              <span className="font-bold text-[1.1rem] ml-6 cursor-pointer hover:opacity-80">
+                Home
+              </span>
+            </Link>
+            <span
+              className="font-bold ml-[10px] text-[1.1rem] cursor-pointer hover:opacity-80"
+              onClick={() => setAddUser(!addUser)}
+            >
+              Add User
+            </span>
+            <span
+              className="font-bold text-[1.1rem] ml-6 cursor-pointer hover:opacity-80"
+              onClick={() => setAddEvent(!addEvent)}
+            >
+              Add Event
+            </span>
+            <span
+              className="font-bold text-[1.1rem] ml-6 cursor-pointer hover:opacity-80"
+              onClick={signout}
+            >
+              Sign Out
+            </span>
           </section>
-          <section className='flex md:hidden relative'>
-            <CiMenuKebab className='text-[1.2rem] text-ascent cursor-pointer' onClick={() => setShowMenu(!showMenu)}/>
-            <section className={`${showMenu ? "w-[9rem] bg-ascent rounded-lg p-2 absolute right-2 top-7 z-30 fkex flex-row justify-between" : 'hidden'}`}>
-              <div className="text-primary text-[1.1rem] cursor-pointer p-3" onClick={() => setAddUser(!addUser)}>Add User</div>
-              <div className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2" onClick={() => setAddEvent(!addEvent)}>Add Event</div>
-              <div className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2" onClick={signout}>Sign Out</div>
+          <section className="flex md:hidden relative">
+            <CiMenuKebab
+              className="text-[1.2rem] text-ascent cursor-pointer"
+              onClick={() => setShowMenu(!showMenu)}
+            />
+            <section
+              className={`${
+                showMenu
+                  ? "w-[9rem] bg-ascent rounded-lg p-2 absolute right-2 top-7 z-30 fkex flex-row justify-between"
+                  : "hidden"
+              }`}
+            >
+              <Link to={"/"}>
+                <div
+                  className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-b-2"
+                  onClick={() => setAddUser(!addUser)}
+                >
+                  Home
+                </div>
+              </Link>
+
+              <div
+                className="text-primary text-[1.1rem] cursor-pointer p-3"
+                onClick={() => setAddUser(!addUser)}
+              >
+                Add User
+              </div>
+              <div
+                className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2"
+                onClick={() => setAddEvent(!addEvent)}
+              >
+                Add Event
+              </div>
+              <div
+                className="text-primary text-[1.1rem] cursor-pointer p-3 border-solid border-t-2"
+                onClick={signout}
+              >
+                Sign Out
+              </div>
             </section>
           </section>
 
-          <section className={`${addUser ? "absolute top-0 left-0 flex justify-center items-center h-screen w-screen z-40" : 'hidden'}`}>
+          <section
+            className={`${
+              addUser
+                ? "absolute top-0 left-0 flex justify-center items-center h-screen w-screen z-40"
+                : "hidden"
+            }`}
+          >
             <form className="relative h-screen w-full max-w-5xl bg-primary z-30 rounded-lg p-6 flex flex-col justify-center items-center">
-              <AiOutlineClose 
-                className='text-[1.8rem] text-red-950 absolute top-6 md:top-12 right-6 md:right-12 font-extrabold cursor-pointer' 
+              <AiOutlineClose
+                className="text-[1.8rem] text-red-950 absolute top-6 md:top-12 right-6 md:right-12 font-extrabold cursor-pointer"
                 onClick={() => {
-                  setAddUser(false)
-                  setMessage('')
-                  unameRef.current.value = ''
-                  passRef.current.value = ''
-                  cPassRef.current.value = ''
+                  setAddUser(false);
+                  setMessage("");
+                  unameRef.current.value = "";
+                  passRef.current.value = "";
+                  cPassRef.current.value = "";
                 }}
               />
-              <input 
-                type="text" 
-                placeholder='Enter username...'
-                className='h-[3.9rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent' 
+              <input
+                type="text"
+                placeholder="Enter username..."
+                className="h-[3.9rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent"
                 ref={unameRef}
               />
-              <input 
-                type="password" 
-                placeholder='Enter password...'
-                className='h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'
+              <input
+                type="password"
+                placeholder="Enter password..."
+                className="h-[3.8rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent"
                 ref={passRef}
               />
-              <input 
-                type="password" 
-                placeholder='Enter confirm password...'
-                className='h-[3.9rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent'
+              <input
+                type="password"
+                placeholder="Enter confirm password..."
+                className="h-[3.9rem] w-[93%] md:w-[72%] p-3 px-6 outline-none rounded-xl m-3 bg-primary border-b-4 border-dotted border-ascent"
                 ref={cPassRef}
               />
               <button
-                className='p-3 px-12 bg-ascent rounded-xl hover:opacity-80 m-3' 
+                className="p-3 px-12 bg-ascent rounded-xl hover:opacity-80 m-3"
                 onClick={register}
               >
                 Regiter
               </button>
               <div
-                className={`${message != '' ? 'p-3 h-[3.9rem] w-[93%] md:w-[72%] text-primary bg-secondary mt-3 rounded-xl flex justify-center items-center' : 'hidden'}`}
-              >{message}</div>
+                className={`${
+                  message != ""
+                    ? "p-3 h-[3.9rem] w-[93%] md:w-[72%] text-primary bg-secondary mt-3 rounded-xl flex justify-center items-center"
+                    : "hidden"
+                }`}
+              >
+                {message}
+              </div>
             </form>
           </section>
 
-          <section className={`${addEvent ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary" : 'hidden'}`}>
-            <EventRegisterForm 
-              setAddEvent={setAddEvent} 
-              changed={changed} 
+          <section
+            className={`${
+              addEvent
+                ? "absolute top-0 left-0 flex justify-center items-center min-h-screen w-screen z-40 bg-primary"
+                : "hidden"
+            }`}
+          >
+            <EventRegisterForm
+              setAddEvent={setAddEvent}
+              changed={changed}
               setChanged={setChanged}
             />
           </section>
         </nav>
 
-        <main className='mt-3 px-9'>
-
+        <main className="mt-3 px-9">
           <section className="flex w-full m-auto bg-ascent h-[3rem]">
             <section className="h-full w-1/2 flex justify-center items-center border-dashed border-r-2">
               <span
-                className={`${category === 'events' ? "text-white cursor-pointer opacity-80 p-2 px-4 border-solid" : "cursor-pointer opacity-80 p-2 px-4 border-solid"}`}
-                onClick={() => setCategory('events')}
-              >EVENTS</span>
+                className={`${
+                  category === "events"
+                    ? "text-white cursor-pointer opacity-80 p-2 px-4 border-solid"
+                    : "cursor-pointer opacity-80 p-2 px-4 border-solid"
+                }`}
+                onClick={() => setCategory("events")}
+              >
+                EVENTS
+              </span>
             </section>
             <section className="h-full w-1/2 flex justify-center items-center">
               <span
-                className={`${category === 'users' ? "text-white cursor-pointer opacity-80 p-2 px-4 border-solid" : "cursor-pointer opacity-80 p-2 px-4 border-solid"}`}
-                onClick={() => setCategory('users')}
-              >USERS</span>
+                className={`${
+                  category === "users"
+                    ? "text-white cursor-pointer opacity-80 p-2 px-4 border-solid"
+                    : "cursor-pointer opacity-80 p-2 px-4 border-solid"
+                }`}
+                onClick={() => setCategory("users")}
+              >
+                USERS
+              </span>
             </section>
           </section>
 
           <section className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-4">
-            {
-              category == 'users' ? (
-                users.length == 0 ? (
-                  <div className="h-[21rem] w-[200%] flex justify-center items-center">
-                    <h1 className='font-extrabold text-[1.8rem] md:text-[2.7rem]'>No users Found...</h1>
-                  </div>
-                ) : (
-                  users.map((user) => (
-                    <Usercard 
-                      userName={user.userName}
-                      role={user.role} 
-                      changed={changed}
-                      setChanged={setChanged}
-                      key={user._id}
-                    />
-                  ))
-                )
-              )
-              :
-              events.length == 0 ? (
+            {category == "users" ? (
+              users.length == 0 ? (
                 <div className="h-[21rem] w-[200%] flex justify-center items-center">
-                  <h1 className='font-extrabold text-[1.8rem] md:text-[2.7rem]'>No events Found...</h1>
+                  <h1 className="font-extrabold text-[1.8rem] md:text-[2.7rem]">
+                    No users Found...
+                  </h1>
                 </div>
               ) : (
-                events.map((event) => (
-                  <Card 
-                    key={event._id} 
-                    id={event._id} 
-                    Name={event.name} 
-                    btn={'Update Now'} 
-                    img={event.image} 
-                    rules={event.rules} 
-                    desc={event.description} 
-                    link={event.link} 
-                    startDate={event.postedAt} 
-                    endDate={event.expireAt} 
-                    setChanged={setChanged} 
-                    changed={changed} 
+                users.map((user) => (
+                  <Usercard
+                    userName={user.userName}
+                    role={user.role}
+                    changed={changed}
+                    setChanged={setChanged}
+                    key={user._id}
                   />
                 ))
               )
-            }
+            ) : events.length == 0 ? (
+              <div className="h-[21rem] w-[200%] flex justify-center items-center">
+                <h1 className="font-extrabold text-[1.8rem] md:text-[2.7rem]">
+                  No events Found...
+                </h1>
+              </div>
+            ) : (
+              events.map((event) => (
+                <Card
+                  key={event._id}
+                  id={event._id}
+                  Name={event.name}
+                  btn={"Update Now"}
+                  img={event.image}
+                  rules={event.rules}
+                  desc={event.description}
+                  link={event.link}
+                  startDate={event.postedAt}
+                  endDate={event.expireAt}
+                  setChanged={setChanged}
+                  changed={changed}
+                />
+              ))
+            )}
           </section>
         </main>
       </section>
     </div>
-  )
+  );
 }
 
 export default Admin
