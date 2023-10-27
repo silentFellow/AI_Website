@@ -8,7 +8,9 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-  const[events,setEvents] = useState([])
+  const [events,setEvents] = useState([])
+  const [slideImages, setSlideImages] = useState([img1, img])
+  const [imageCounter, setImageCounter] = useState(0)
 
   useEffect (() => {
     const getEvents = async() => {
@@ -26,16 +28,26 @@ const Home = () => {
   
   return (
     <div className="flex flex-col max-w-full bg-home-bg">
-      <div className="flex flex-col sm:flex-row justify-center sm:justify-end">
-        <section className="ellipses bg-blue-100 sm:h-[650px] w-[90%] sm:w-[900px]">
-        <Link to={"admin/login"}><button className="float-left bg-ascent text-primary p-2 px-6 rounded-xl text-[20px] ml-[15rem] lg:ml-0 mt-[3rem] cursor-pointer hover:opacity-70">
-          Login
-        </button></Link>
+      <div className="mt-6 flex flex-col sm:flex-row justify-center sm:justify-end">
+        <section className="hidden lg:block ellipses bg-blue-100 sm:h-[650px] w-[90%] sm:w-[810px]">
           <img
             src={img}
             alt="AI logo"
-            class="w-full mr-[120rem] sm:w-[700px] lg:w-[700px] -mt-20 bg-transparent"
+            class="w-full mt-[-0.9rem] mr-[90rem] sm:w-[700px] lg:w-[700px] bg-transparent"
           />
+        </section>
+        <section className="min-h-full w-full max-w-3xl flex flex-col justify-evenly items-center mr-[12rem]">
+          <section className="w-[72%] h-[66%] bg-black rounded-md relative">
+            <img 
+              src={slideImages[imageCounter]} 
+              className='h-full w-full'
+            />
+            <Link to={"admin/login"}>
+              <button className="absolute top-6 right-6 bg-transparent text-primary p-2 px-6 rounded-xl text-[20px] cursor-pointer hover:opacity-70 border-2 border-solid border-ascent">
+                Login
+              </button>
+            </Link>
+          </section>
         </section>
       </div>
 
